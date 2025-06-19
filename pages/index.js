@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-black p-6">
       <div className="max-w-3xl mx-auto text-center">
-        <div className="bg-gray-100 rounded-2xl shadow-md p-10">
+        <div className="min-h-screen bg-white text-black p-6">
           <h1 className="text-4xl font-bold mb-4">InvestMate</h1>
           <p className="text-lg mb-6">
             Aprende a invertir en bolsa, criptomonedas, fondos y más con ayuda de una IA
