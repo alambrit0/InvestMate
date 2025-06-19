@@ -1,12 +1,24 @@
+// pages/login.js
 import { useState } from "react";
+import { auth } from "../lib/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Funcionalidad aún en desarrollo");
+    setError("");
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert("¡Inicio de sesión correcto!");
+      // Aquí puedes redirigir al usuario a otra página, por ejemplo:
+      // router.push('/dashboard');
+    } catch (error) {
+      setError("Email o contraseña incorrectos.");
+    }
   };
 
   return (
@@ -33,6 +45,7 @@ export default function Login() {
           <button type="submit" className="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800">
             Entrar
           </button>
+          {error && <p className="text-red-500 mt-2">{error}</p>}
         </form>
       </div>
     </main>
